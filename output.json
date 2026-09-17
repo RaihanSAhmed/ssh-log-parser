@@ -1,0 +1,20 @@
+[
+    {
+        "timestamp": "Sep 17 04:15:22",
+        "event": "Failed SSH Login",
+        "user": "admin",
+        "source_ip": "192.168.1.50"
+    },
+    {
+        "timestamp": "Sep 17 04:15:25",
+        "event": "Failed SSH Login",
+        "user": "root",
+        "source_ip": "10.0.0.15"
+    },
+    {
+        "timestamp": "Sep 17 04:17:12",
+        "event": "Failed SSH Login",
+        "user": "deployer",
+        "source_ip": "172.16.0.45"
+    }
+]
