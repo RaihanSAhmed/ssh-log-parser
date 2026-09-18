@@ -1,6 +1,5 @@
-[project_readme.md](https://github.com/user-attachments/files/32359079/project_readme.md)
 SSH Log Parser & Security Event Normalizer
-A beginner-friendly Python automation script designed to parse raw, unstructured Linux SSH authentication logs and normalize them into structured JSON data. Built as part of a security engineering and detection portfolio.
+A Python automation script designed to parse raw, unstructured Linux SSH authentication logs and normalize them into structured JSON data.
 
 ## 🚀 Project Overview
 
