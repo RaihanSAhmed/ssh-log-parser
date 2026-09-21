@@ -1,68 +1,33 @@
-SSH Log Parser & Security Event Normalizer
-A Python automation script designed to parse raw, unstructured Linux SSH authentication logs and normalize them into structured JSON data.
+# SSH Log Parser & Security Event Normalizer
 
-## 🚀 Project Overview
+A Python automation script that parses raw Linux SSH authentication logs, extracts failed login events, and converts them into structured JSON data.
 
-In a security engineering role, dealing with raw log data is a daily reality. Syslog data is unstructured text, making it difficult for automated tools and analytics platforms to query effectively.
+## Project Overview
 
-This project solves that problem by building a lightweight Python script that filters background noise, extracts key indicators of compromise (IOCs) or failed login attempts, and formats them into clean JSON.
+Linux SSH authentication logs contain useful security information, but the raw format is unstructured text. This makes the data harder to analyze programmatically.
 
-## 🛠️ Tech Stack
+This project automates the initial parsing process by:
 
-* **Language:** Python 3
-* **Environment:** Windows Command Prompt (CMD)
-* **Data Format:** JSON
+- Reading SSH authentication logs line by line
+- Identifying failed password attempts
+- Extracting timestamps, usernames, and source IP addresses
+- Converting the events into structured JSON
 
-## 📂 Project Structure
+The resulting data can be used as a starting point for further security analysis or SIEM ingestion.
+
+## Tech Stack
+
+- **Language:** Python 3
+- **Data Format:** JSON
+- **Environment:** Windows Command Prompt (CMD)
+
+## Project Structure
 
 ```text
 ssh-log-parser/
 │
 ├── logs/
-│   └── sample_auth.log   # Raw input authentication logs
-├── parser.py             # Python automation script
-├── output.json           # Cleaned, structured security events
+│   └── sample_auth.log   # Sample SSH authentication logs
+├── parser.py             # Python log parsing script
+├── output.json           # Structured security events
 └── README.md             # Project documentation
-```
-
-## 🔍 How It Works (`parser.py`)
-
-1. **Line-by-Line Ingestion:** The script reads the raw log file iteratively to ensure high memory efficiency.
-2. **Noise Filtering:** It checks for the string `"Failed password"` to isolate unauthorized access attempts from normal system background tasks.
-3. **Data Normalization:** It chops the log line into an array of words using `.split()` and extracts crucial fields:
-   * **Timestamp:** Month, Day, Time
-   * **Event Type:** Failed SSH Login
-   * **Target User:** Dynamic extraction handling standard and invalid users
-   * **Source IP:** The origin address of the attack attempt
-4. **Structured Export:** Packages the extracted dictionary data and writes it cleanly to `output.json` with indentation.
-
-## 💻 How to Run It Locally
-
-1. Clone or download this repository.
-2. Ensure you have Python installed.
-3. Open your terminal inside the project directory and run:
-   ```cmd
-   python parser.py
-   ```
-4. View the structured output:
-   ```cmd
-   type output.json
-   ```
-
-## 📸 Sample Output (`output.json`)
-
-```json
-[
-    {
-        "timestamp": "Sep 17 04:15:22",
-        "event": "Failed SSH Login",
-        "user": "admin",
-        "source_ip": "192.168.1.50"
-    }
-]
-```
-
-## 🎯 Key Takeaways & Portfolio Value
-
-* Demonstrated proficiency in text manipulation, string parsing, and file I/O in Python.
-* Built a foundational telemetry-normalization pipeline mimicking basic SIEM (Security Information and Event Management) preprocessing workflows.
